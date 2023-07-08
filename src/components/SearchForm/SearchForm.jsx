@@ -3,8 +3,7 @@ import { StyledButtonLarge } from "../App/App.styled";
 import { StyledForm, StyledInput, StyledLabel } from "./SearchForm.styled";
 
 export const SearchForm = ({ setSearchTerm }) => {
-
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   function handleInput(event) {
     setInputValue(event.target.value);
@@ -12,14 +11,20 @@ export const SearchForm = ({ setSearchTerm }) => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    setSearchTerm(inputValue)
+    setSearchTerm(inputValue);
+    setInputValue("");
   }
 
   return (
     <StyledForm onSubmit={handleSubmit}>
       <StyledLabel htmlFor="search">Search: </StyledLabel>
-      <StyledInput id="search" type="text" onChange={handleInput} value={inputValue} />
-      <StyledButtonLarge type="submit"  >Submit</StyledButtonLarge>
+      <StyledInput
+        id="search"
+        type="text"
+        onChange={handleInput}
+        value={inputValue}
+      />
+      <StyledButtonLarge type="submit">Submit</StyledButtonLarge>
     </StyledForm>
   );
 };

@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { SearchForm } from "../SearchForm/SearchForm";
 import { List } from "../List/List";
 import { StyledContainer, StyledTitle } from "./App.styled";
 import { useState } from "react";
-
+import { DisplayFilter } from "../DisplayFilter/DisplayFilter";
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState(
+    localStorage.getItem("searchTerm") || ""
+  );
 
-  const [searchTerm, setSearchTerm] = useState('');
   const [stories, setStories] = useState([
     {
       title: "React",
@@ -26,15 +28,31 @@ function App() {
       points: 5,
       objectID: 1,
     },
-  ])
-  const filterStories= ()=> stories.filter(story=>story.title.toLowerCase().includes(searchTerm.toLowerCase()));
-  
-  const handleRemoveStory =(id) => setStories(stories.filter(story => story.objectID!==id))
+  ]);
+  const filterStories = () =>
+    stories.filter((story) =>
+      story.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+  useEffect(() => {
+    localStorage.setItem("searchTerm", searchTerm);
+  }, [searchTerm]);
+
+  const handleRemoveStory = (id) =>
+    setStories(stories.filter((story) => story.objectID !== id));
   return (
     <StyledContainer>
       <StyledTitle>Hacker Stories</StyledTitle>
       <SearchForm setSearchTerm={setSearchTerm} />
-      <List stories={filterStories()} handleRemoveStory={handleRemoveStory}/>
+      {searchTerm && (
+        <DisplayFilter
+          searchTerm={searchTerm}
+          reset={() => {
+            setSearchTerm("");
+          }}
+        />
+      )}
+      <List stories={filterStories()} handleRemoveStory={handleRemoveStory} />
     </StyledContainer>
   );
 }
