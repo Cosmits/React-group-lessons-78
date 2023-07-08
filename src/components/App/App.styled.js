@@ -17,3 +17,26 @@ font-size: 48px;
   font-weight: 300;
   letter-spacing: 2px;
 `
+
+
+const StyledButton = styled.button`
+  background: transparent;
+  border: 1px solid #171212;
+  cursor: pointer;
+
+  transition: all 0.1s ease-in;
+
+  &:hover {
+    background: #171212;
+    color: #ffffff;
+  }
+`
+
+export const StyledButtonSmall = styled(StyledButton)`
+  padding: 5px;
+
+`
+
+export const StyledButtonLarge = styled(StyledButton)`
+  padding: 10px;
+`

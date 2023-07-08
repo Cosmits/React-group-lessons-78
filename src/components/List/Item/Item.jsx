@@ -1,3 +1,4 @@
+import { StyledButtonSmall } from "../../App/App.styled";
 import { StyledItem, StyledItemContent } from "./Item.styled";
 
 export const Item = ({
@@ -12,7 +13,7 @@ export const Item = ({
       <StyledItemContent width="10%">{num_comments}</StyledItemContent>
       <StyledItemContent  width="10%">{points}</StyledItemContent>
       <StyledItemContent  width="10%">
-        <button type="button">Dismiss</button>
+        <StyledButtonSmall type="button">Dismiss</StyledButtonSmall>
       </StyledItemContent>
     </StyledItem>
   );
