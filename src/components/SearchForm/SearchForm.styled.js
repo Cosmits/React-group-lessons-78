@@ -1,23 +1,48 @@
-import styled from "styled-components";
+import styled from '@emotion/styled';
 
-export const StyledForm = styled.form`
-  padding: 10px 0 20px 0;
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-`
+export const SearchFormStyled = styled.form`
+  width: ${({ theme }) => theme.spacing(100)};
+  margin-left: auto;
+  margin-right: auto;
 
-export const StyledInput = styled.input`
-  border: none;
-  border-bottom: 1px solid #171212;
+  position: relative;
+
+  margin-bottom: ${({ theme }) => theme.spacing(20)};
+`;
+
+export const InputSearch = styled.input`
+  width: 100%;
+  height: ${({ theme }) => theme.spacing(14)};
+
+  border-style: none;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.dark};
   background-color: transparent;
-  font-size: 24px;
-  margin: 0 24px
-`
 
-export const StyledLabel = styled.label`
-  border: 1px solid #171212;
-  border-radius: 8px;
-  padding: 0 8px;
-  font-size: 24px;
-`
+  padding: ${({ theme }) => theme.spacing(4)};
+  padding-right: ${({ theme }) => theme.spacing(10)};
+  outline: none;
+
+  transition: ${({ theme }) => theme.animation.cubicBezier};
+
+  font-size: ${({ theme }) => theme.fontSizes.medium};
+  color: ${({ theme }) => theme.colors.dark};
+  font-weight: 300;
+  letter-spacing: 0.03em;
+
+  &::placeholder {
+    font-weight: 200;
+  }
+`;
+
+export const FormBtn = styled.button`
+  width: 50px;
+  height: 50px;
+
+  font-size: 20px;
+  font-weight: bold;
+  color: ${({ theme }) => theme.colors.dark};
+
+  position: absolute;
+  top: 0;
+  right: 0;
+`;
