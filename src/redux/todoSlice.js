@@ -17,8 +17,8 @@ const todosSlice = createSlice({
     },
 });
 
-export const {addTodo, deleteTodo} = todosSlice.actions;
+export const { addTodo, deleteTodo } = todosSlice.actions;
 
-export const selectTodos = state => state.todos;
+export const selectTodos = state => state.todos.todos;
 
 export const todosSliceReducer = todosSlice.reducer;
